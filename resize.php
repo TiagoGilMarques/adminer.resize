@@ -18,9 +18,10 @@ class AdminerResize
 			let resizing = false;
 
 			function resize(menu_width) {
+				menu_width = parseInt(menu_width, 10);
 				$("#menu").css("width", (menu_width) + "px");
 				$("[data-resize]").css("left", menu_width + "px");
-				$("#content").css("margin-left", (menu_width) + "px");
+				$("#content").css("margin-left", (menu_width + 20) + "px");
 			}
 
 			$(document).ready(function() {
@@ -43,7 +44,7 @@ class AdminerResize
 						let delta = (e.pageX - resize_prev_x_pos);
 						let new_menu_width = menu_width + delta;
 
-						if(new_menu_width > 231) {
+						if(new_menu_width > 170) {
 							resize_prev_x_pos = e.pageX;
 							resize(new_menu_width);
 
@@ -64,7 +65,7 @@ class AdminerResize
 		</script>
 
 		<style type="text/css">
-			[data-resize] { display: block; position: fixed; top: 40px; left: 250px; width: 4px; min-height: 100%; background-color: #65ADC3; cursor: col-resize; }
+			[data-resize] { display: block; position: absolute; top: 40px; left: 250px; width: 2px; min-height: 100%; background-color: #65ADC3; cursor: col-resize; }
 		</style>
 		<?php
 	}
